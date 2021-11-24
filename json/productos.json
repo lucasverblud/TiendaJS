@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "codigo": "000001",
+        "nombre": "MagicShop",
+        "imagen": "images/Buzo1.jpeg",
+        "precioLista": "3800",
+        "precio": "3500"
+    },
+    {
+        "id": 2,
+        "codigo": "000002",
+        "nombre": "Bangtan",
+        "imagen": "images/Buzo4.jpeg",
+        "precioLista": "3800",
+        "precio": "3500"
+    },
+    {
+        "id": 3,
+        "codigo": "000003",
+        "nombre": "MobPsycho",
+        "imagen": "images/Buzo2.jpeg",
+        "precioLista": "3800",
+        "precio": "3500"
+    },
+    {
+        "id": 4,
+        "codigo": "000004",
+        "nombre": "ButterBlack",
+        "imagen": "images/Buzo5.jpeg",
+        "precioLista": "3800",
+        "precio": "3500"
+    },
+    {
+        "id": 5,
+        "codigo": "000005",
+        "nombre": "PermissionToDance",
+        "imagen": "images/Remera1.jpeg",
+        "precioLista": "2600",
+        "precio": "2200"
+    },
+    {
+        "id": 6,
+        "codigo": "000006",
+        "nombre": "PermissionToDanceN1",
+        "imagen": "images/Remera4.jpeg",
+        "precioLista": "2600",
+        "precio": "2200"
+    },
+    {
+        "id": 7,
+        "codigo": "000007",
+        "nombre": "PTD",
+        "imagen": "images/Remera2.jpeg",
+        "precioLista": "2600",
+        "precio": "2200"
+    },
+    {
+        "id": 8,
+        "codigo": "000008",
+        "nombre": "PermissionToDanceN2",
+        "imagen": "images/Remera5.jpeg",
+        "precioLista": "2600",
+        "precio": "2200"
+    }]
