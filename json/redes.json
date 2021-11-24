@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nombre": "facebook",
+        "link": "https://facebook.com/borahae.cba",
+        "src": "images/social_facebook_fb_35.png"
+    },
+    {
+        "id": 2,
+        "nombre": "instagram",
+        "link": "https://instagram.com/borahae.cba",
+        "src": "images/social_instagram_3.png"
+    },
+    {
+        "id": 3,
+        "nombre": "tiktok",
+        "link": "https://tiktok.com/@borahae.cba",
+        "src": "images/tiktok_logo_icon_186928.png"
+    },
+    {
+        "id": 4,
+        "nombre": "whatsapp",
+        "link": "https://api.whatsapp.com/send?phone=5493516164148&text=Hola%2C%20quiero%20hacer%20una%20consulta",
+        "src": "images/whatsapp-black_100119.png"
+    }]
+

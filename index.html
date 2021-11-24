@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Tienda online de Borahae cba</title>
+        <meta name="description" content="Esta es la tienda online de Borahae cba! Ingresá y conocé nuestra amplia variedad de productos.">
+        <!-- Se incluira la url cuando este subida-->
+        <meta property="og:url" content=""/>
+        <meta property="og:type" content="website"/> 
+        <meta property="og:title" content="Tienda online de Borahae cba"/>
+        <meta property="og:description" content="Esta es la tienda online de Borahae cba! Ingresá y conocé nuestra amplia variedad de productos."/>
+        <!-- Se incluira la url de imagen logo cuando este subida-->
+        <meta property="og:image" content=""/>
+        <meta name="keywords"  content="BTS, COREA, ARMY, KPOP">   
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="index.html">Inicio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="pages/Productos.html">Todos los productos</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="pages/ProductosBuzos.html">Buzos/Hoodies</a></li>
+                                <li><a class="dropdown-item" href="pages/ProductosRemeras.html">Remeras</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="pages/TablaTalles.html">Tabla de Talles</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/Contacto.html">Contacto</a></li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>                           
+                            <span id="iconCarrito" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <a href="Index.html">
+                        <img src="images/logo.png" class="img-fluid" alt="logo">						
+                    </a>
+					<h1 class="display-4 fw-bolder">BORAHAE</h1>
+					<p class="lead fw-normal text-white-50 mb-0">Tienda de articulos de diseños exclusivos BTS</p>
+                </div>                
+            </div>                     
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div id="divProductos" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                </div>
+            </div>             
+        </section>
+
+        <!-- Canasta -->
+        <div class="container-fluid" id="contenedorCarrito">
+            <div class="row text-center justify-content-center">
+                <div class="col-md-6 col-lg-10 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-dark">CARRITO</span>
+                    <span id="badgeCarrito" class="badge bg-dark rounded-pill">0</span>
+                </h4>
+                <ul id="listadoCarrito" class="list-group mb-3">
+                </ul>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span id="totalPagar">Total</span>
+                        <strong></strong>
+                    </li>
+                </ul>
+            </div>
+        </div> 
+        
+        
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container">  
+                <ul id="redSocial" class="nav justify-content-center">
+                  </ul>           
+            </div>
+            <p class="m-0 text-center text-white">Copyright &copy; LV 2021</p>
+        </footer>
+        <!-- Bootstrap core JS-->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!--<script src="js/scripts.js"></script>-->
+        <!--<script src="js/main.js"></script>-->
+
+
+		<!-- Curso CoderJS-->
+        <!--Link jquery-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!--Link js Propios-->
+        <script src="js/carroProductos.js"></script>
+        <script src="js/obtenerProductos.js"></script>
+        <script src="js/obtenerRedes.js"></script>        
+    </body>
+</html>
