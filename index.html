@@ -41,7 +41,7 @@
                         <li class="nav-item"><a class="nav-link" href="pages/Contacto.html">Contacto</a></li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                        <button id="btnCarrito" class="btn btn-outline-dark boton-canasta" type="submit">
                             <i class="bi-cart-fill me-1"></i>                           
                             <span id="iconCarrito" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
@@ -69,8 +69,8 @@
             </div>             
         </section>
 
-        <!-- Canasta -->
-        <div class="container-fluid" id="contenedorCarrito">
+        <!-- Canasta 
+        <div class="canasta container-fluid" id="contenedor-general-canasta">
             <div class="row text-center justify-content-center">
                 <div class="col-md-6 col-lg-10 order-md-last">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -86,7 +86,27 @@
                     </li>
                 </ul>
             </div>
-        </div> 
+        </div> -->
+
+        <!-- Canasta -->
+        <div class="canasta container-fluid" id="contenedor-general-canasta">
+            <div class="row mx-1">
+                <div class="col order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-dark">CARRITO</span>
+                    </h4>
+                    <ul id="listadoCarrito" class="list-group mb-3">
+                    
+                    </ul>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span id="totalPagar">Total</span>
+                            <strong></strong>
+                        </li>
+                    </ul>                   
+                </div>
+            </div>
+        </div>
         
         
         <!-- Footer-->
