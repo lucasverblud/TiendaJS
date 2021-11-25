@@ -7,11 +7,11 @@ const total = document.getElementById("totalPagar");
 
 // Con esta función puedo eliminar productos de la canasta
 const eliminarProducto = (producto) => {
-    
+
     for (const productoCanasta of contenedorCarrito.children) {
-        
+
         if (parseInt(productoCanasta.id) === parseInt(producto.id)) {
-            
+
             productoCanasta.parentElement.removeChild(productoCanasta);
             // El método indexOf me permite obtener el índice de algún item de un Array
             const index = canastaLocalStorage.indexOf(producto);
@@ -56,12 +56,12 @@ const insertarProductosACanasta = (producto) => {
 }
 
 const actualizarCarritoIcon = () => {
-    
+
     let totalCarrito = 0;
     for (const producto of canastaLocalStorage) {
         totalCarrito = totalCarrito + 1;
     }
-    
+
     console.log(totalCarrito);
     iconoCarrito.innerHTML = `${totalCarrito}`
     badgeCarrito.innerHTML = `${totalCarrito}`
@@ -84,4 +84,4 @@ const convertirPrecioANumero = (precio) => parseInt(precio.replaceAll(",", ""));
 
 const numeroAComas = (total) => {
     return total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+} 
