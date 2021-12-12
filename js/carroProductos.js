@@ -1,58 +1,31 @@
+
 const canastaLocalStorage = [];
-const contenedorCarrito = document.getElementById("listadoCarrito");
-const iconoCarrito = document.getElementById("iconCarrito");
-const badgeCarrito = document.getElementById("badgeCarrito");
-const total = document.getElementById("totalPagar");
-
-
-// Con esta función puedo eliminar productos de la canasta
+/* Con esta función puedo eliminar productos de la canasta */
 const eliminarProducto = (producto) => {
 
-    for (const productoCanasta of contenedorCarrito.children) {
-
-        if (parseInt(productoCanasta.id) === parseInt(producto.id)) {
-
-            productoCanasta.parentElement.removeChild(productoCanasta);
-            // El método indexOf me permite obtener el índice de algún item de un Array
-            const index = canastaLocalStorage.indexOf(producto);
-
-            // El método splice permite eliminar un elemento de un Array, paso el indice y cuantos elementos quiero eliminar
-            canastaLocalStorage.splice(index, 1);
-            localStorage.setItem("carrito", JSON.stringify(canastaLocalStorage));
-            actualizarCarritoIcon();
-            sumarCarrito();
-        }
-    }
-}
-
-const insertarProductosACanasta = (producto) => {
-
-    let contenedor = document.createElement("li");
-    contenedor.className = "list-group-item d-flex justify-content-between lh-sm";
-    contenedor.id = producto.id;
-    contenedor.onclick = () => { console.log("Click de producto") };
-    contenedor.innerHTML = `
-    <div>
-        <h6 class="my-0">${producto.nombre}</h6>
-        <small class="text-muted">${producto.codigo}</small>
-    </div>
-    <span class="text-muted">$${producto.precio}</span>`
-
-    // Inserto un elemento botón al elemento recientemente creado que contenga la función para poder eliminar el prodcuto de la canasta
-
-    let boton = document.createElement("button");
-    boton.className = "btn btn-outline-dark";
-    boton.innerHTML = "Eliminar";
-    boton.onclick = () => eliminarProducto(producto);
-    contenedor.appendChild(boton);
-
-    contenedorCarrito.appendChild(contenedor);
-
-    canastaLocalStorage.push(producto);
-    console.log(canastaLocalStorage);
+    $(`#productoCanasta-${producto.id}`).remove();
+    const index = canastaLocalStorage.findIndex(productoLocal => parseInt(producto.id) === parseInt(productoLocal.id));
+    canastaLocalStorage.splice(index, 1);
     localStorage.setItem("carrito", JSON.stringify(canastaLocalStorage));
     actualizarCarritoIcon();
     sumarCarrito();
+}
+
+const convertirPrecioANumero = (precio) => parseInt(precio.replaceAll(",", ""));
+
+// https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+const numeroAComas = (total) => {
+    return total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+const sumarCarrito = () => {
+    let totalCanasta = 0;
+    for (const producto of canastaLocalStorage) {
+        totalCanasta = totalCanasta + (producto.precio * producto.cantidad);
+    }
+
+    $("#totalPagar").html(`$${numeroAComas(totalCanasta)}`);
+    localStorage.setItem("totalAPagar", totalCanasta);
 }
 
 const actualizarCarritoIcon = () => {
@@ -62,26 +35,56 @@ const actualizarCarritoIcon = () => {
         totalCarrito = totalCarrito + 1;
     }
 
-    console.log(totalCarrito);
-    iconoCarrito.innerHTML = `${totalCarrito}`
-    badgeCarrito.innerHTML = `${totalCarrito}`
+    $("#iconCarrito").html(`${totalCarrito}`);
+    $("#badgeCarrito").html(`${totalCarrito}`);
+
     localStorage.setItem("totalCarrito", totalCarrito);
 }
 
-const sumarCarrito = () => {
-    let totalCanasta = 0;
-    for (const producto of canastaLocalStorage) {
-        console.log(producto.precio.replaceAll(",", ""));
-        totalCanasta = totalCanasta + convertirPrecioANumero(producto.precio);
+// TOGGLE BOTÓN CANASTA
+$(".boton-canasta").on("click", function () {
+    $("#contenedor-general-canasta").toggleClass("on");
+});
+
+/* Con esta función puedo agregar productos del contenedor a la canasta */
+const insertarProductosACanasta = (producto) => {
+    if ($(`#productoCanasta-${producto.id}`).length === 0) {
+        if (!$("#contenedor-general-canasta").hasClass("on")) {
+            $(".boton-canasta").trigger("click");
+        }
+        $('#listadoCarrito').append(`
+        <li class="list-group-item d-flex justify-content-between lh-sm" id="productoCanasta-${producto.id}">
+        <div>
+            <h6 class="my-0">${producto.nombre}</h6>
+            <b> Cantidad: <span id="producto-cantidad-${producto.id}">${producto.cantidad}</span></b>
+        </div>
+        <span class="text-muted">$${producto.precio}</span>
+    </li>
+        `)
+
+        /* Inserto un elemento botón al elemento recientemente creado que contenga la función para poder eliminar el prodcuto de la canasta */
+        $(`#productoCanasta-${producto.id}`).append(`
+            <button id="btn-${producto.id}" type="button" class="btn btn-outline-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path>
+                </svg>
+            </button>
+        `);
+
+        $(`#btn-${producto.id}`).on("click", function () {
+            eliminarProducto(producto);
+        });
+
+        canastaLocalStorage.push(producto);
+
+    } else {
+        const nuevaCantidad = parseInt($(`#producto-cantidad-${producto.id}`).html()) + 1;
+        const i = canastaLocalStorage.findIndex(p => parseInt(p.id) === parseInt(producto.id))
+        canastaLocalStorage[i] = { ...canastaLocalStorage[i], cantidad: nuevaCantidad };
+        $(`#producto-cantidad-${producto.id}`).html(nuevaCantidad)
     }
-    console.log(totalCanasta);
-    total.innerHTML = `$${numeroAComas(totalCanasta)}`
-    localStorage.setItem("totalAPagar", totalCanasta);
+    localStorage.setItem("carrito", JSON.stringify(canastaLocalStorage));
+    actualizarCarritoIcon();
+    sumarCarrito();
 }
 
-// Con esta función puedo agregar productos del contenedor a la canasta
-const convertirPrecioANumero = (precio) => parseInt(precio.replaceAll(",", ""));
-
-const numeroAComas = (total) => {
-    return total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-} 
